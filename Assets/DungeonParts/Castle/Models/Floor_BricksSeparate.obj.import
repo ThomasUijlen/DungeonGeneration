@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Floor_BricksSeparate.obj-3e157849cdfccb532e0e5fbad41202fc.mesh"
+
+[deps]
+
+files=[ "res://.import/Floor_BricksSeparate.obj-3e157849cdfccb532e0e5fbad41202fc.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Floor_BricksSeparate.obj"
+dest_files=[ "res://.import/Floor_BricksSeparate.obj-3e157849cdfccb532e0e5fbad41202fc.mesh", "res://.import/Floor_BricksSeparate.obj-3e157849cdfccb532e0e5fbad41202fc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

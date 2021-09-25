@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Bucket.obj-d56d937ccc3d4efc64bad013d5c8c4df.mesh"
+
+[deps]
+
+files=[ "res://.import/Bucket.obj-d56d937ccc3d4efc64bad013d5c8c4df.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Bucket.obj"
+dest_files=[ "res://.import/Bucket.obj-d56d937ccc3d4efc64bad013d5c8c4df.mesh", "res://.import/Bucket.obj-d56d937ccc3d4efc64bad013d5c8c4df.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

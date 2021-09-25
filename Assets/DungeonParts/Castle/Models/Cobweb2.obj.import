@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Cobweb2.obj-3746c0faa1962ebfb761d016a5a7110b.mesh"
+
+[deps]
+
+files=[ "res://.import/Cobweb2.obj-3746c0faa1962ebfb761d016a5a7110b.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Cobweb2.obj"
+dest_files=[ "res://.import/Cobweb2.obj-3746c0faa1962ebfb761d016a5a7110b.mesh", "res://.import/Cobweb2.obj-3746c0faa1962ebfb761d016a5a7110b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

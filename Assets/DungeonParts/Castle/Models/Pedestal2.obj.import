@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Pedestal2.obj-7cdba51eaf34800c37da44e6435bdf26.mesh"
+
+[deps]
+
+files=[ "res://.import/Pedestal2.obj-7cdba51eaf34800c37da44e6435bdf26.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Pedestal2.obj"
+dest_files=[ "res://.import/Pedestal2.obj-7cdba51eaf34800c37da44e6435bdf26.mesh", "res://.import/Pedestal2.obj-7cdba51eaf34800c37da44e6435bdf26.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Arch_Door_bottompivot.obj-d816c0653297d2324a28c16461bf1f9f.mesh"
+
+[deps]
+
+files=[ "res://.import/Arch_Door_bottompivot.obj-d816c0653297d2324a28c16461bf1f9f.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Arch_Door_bottompivot.obj"
+dest_files=[ "res://.import/Arch_Door_bottompivot.obj-d816c0653297d2324a28c16461bf1f9f.mesh", "res://.import/Arch_Door_bottompivot.obj-d816c0653297d2324a28c16461bf1f9f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

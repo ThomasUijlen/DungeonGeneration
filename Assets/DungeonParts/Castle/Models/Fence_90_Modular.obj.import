@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Fence_90_Modular.obj-22ed94ddea0cbca49f40ae99192b426d.mesh"
+
+[deps]
+
+files=[ "res://.import/Fence_90_Modular.obj-22ed94ddea0cbca49f40ae99192b426d.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Fence_90_Modular.obj"
+dest_files=[ "res://.import/Fence_90_Modular.obj-22ed94ddea0cbca49f40ae99192b426d.mesh", "res://.import/Fence_90_Modular.obj-22ed94ddea0cbca49f40ae99192b426d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

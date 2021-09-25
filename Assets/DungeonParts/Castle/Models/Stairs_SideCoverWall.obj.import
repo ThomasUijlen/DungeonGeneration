@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Stairs_SideCoverWall.obj-986509218dd3750db970226003d770cb.mesh"
+
+[deps]
+
+files=[ "res://.import/Stairs_SideCoverWall.obj-986509218dd3750db970226003d770cb.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Stairs_SideCoverWall.obj"
+dest_files=[ "res://.import/Stairs_SideCoverWall.obj-986509218dd3750db970226003d770cb.mesh", "res://.import/Stairs_SideCoverWall.obj-986509218dd3750db970226003d770cb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

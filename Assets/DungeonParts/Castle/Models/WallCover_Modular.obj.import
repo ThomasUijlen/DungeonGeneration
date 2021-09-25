@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/WallCover_Modular.obj-ffc85df280f181b38e4f7ec1afd8e584.mesh"
+
+[deps]
+
+files=[ "res://.import/WallCover_Modular.obj-ffc85df280f181b38e4f7ec1afd8e584.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/WallCover_Modular.obj"
+dest_files=[ "res://.import/WallCover_Modular.obj-ffc85df280f181b38e4f7ec1afd8e584.mesh", "res://.import/WallCover_Modular.obj-ffc85df280f181b38e4f7ec1afd8e584.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

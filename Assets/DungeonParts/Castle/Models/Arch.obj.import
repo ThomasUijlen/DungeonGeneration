@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Arch.obj-e11fc6f66e50c00e8ff136a2475d3555.mesh"
+
+[deps]
+
+files=[ "res://.import/Arch.obj-e11fc6f66e50c00e8ff136a2475d3555.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Arch.obj"
+dest_files=[ "res://.import/Arch.obj-e11fc6f66e50c00e8ff136a2475d3555.mesh", "res://.import/Arch.obj-e11fc6f66e50c00e8ff136a2475d3555.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

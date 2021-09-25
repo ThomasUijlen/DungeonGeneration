@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Stairs_Modular.obj-9812889279b1b38e1a33a875c8e9ef42.mesh"
+
+[deps]
+
+files=[ "res://.import/Stairs_Modular.obj-9812889279b1b38e1a33a875c8e9ef42.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Stairs_Modular.obj"
+dest_files=[ "res://.import/Stairs_Modular.obj-9812889279b1b38e1a33a875c8e9ef42.mesh", "res://.import/Stairs_Modular.obj-9812889279b1b38e1a33a875c8e9ef42.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

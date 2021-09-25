@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Banner.obj-738bf5a23800fff314630f431d5a3b2a.mesh"
+
+[deps]
+
+files=[ "res://.import/Banner.obj-738bf5a23800fff314630f431d5a3b2a.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Banner.obj"
+dest_files=[ "res://.import/Banner.obj-738bf5a23800fff314630f431d5a3b2a.mesh", "res://.import/Banner.obj-738bf5a23800fff314630f431d5a3b2a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

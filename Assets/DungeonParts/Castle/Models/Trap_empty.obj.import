@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Trap_empty.obj-c4299b019b1fd2e51ac4a6ad20050897.mesh"
+
+[deps]
+
+files=[ "res://.import/Trap_empty.obj-c4299b019b1fd2e51ac4a6ad20050897.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Trap_empty.obj"
+dest_files=[ "res://.import/Trap_empty.obj-c4299b019b1fd2e51ac4a6ad20050897.mesh", "res://.import/Trap_empty.obj-c4299b019b1fd2e51ac4a6ad20050897.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

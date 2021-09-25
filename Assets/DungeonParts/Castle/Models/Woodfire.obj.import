@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Woodfire.obj-42990a21a12c8e156afb16d2171d7655.mesh"
+
+[deps]
+
+files=[ "res://.import/Woodfire.obj-42990a21a12c8e156afb16d2171d7655.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Woodfire.obj"
+dest_files=[ "res://.import/Woodfire.obj-42990a21a12c8e156afb16d2171d7655.mesh", "res://.import/Woodfire.obj-42990a21a12c8e156afb16d2171d7655.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

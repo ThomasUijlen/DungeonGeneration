@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Decorative_Wall.obj-88ff7cfc65500b23ec59eeba782b2914.mesh"
+
+[deps]
+
+files=[ "res://.import/Decorative_Wall.obj-88ff7cfc65500b23ec59eeba782b2914.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Decorative_Wall.obj"
+dest_files=[ "res://.import/Decorative_Wall.obj-88ff7cfc65500b23ec59eeba782b2914.mesh", "res://.import/Decorative_Wall.obj-88ff7cfc65500b23ec59eeba782b2914.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
