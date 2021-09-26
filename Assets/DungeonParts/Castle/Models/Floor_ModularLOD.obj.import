@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Floor_ModularLOD.obj-8de9798adbfa4b868f6b98cf72092067.mesh"
+
+[deps]
+
+files=[ "res://.import/Floor_ModularLOD.obj-8de9798adbfa4b868f6b98cf72092067.mesh" ]
+
+source_file="res://Assets/DungeonParts/Castle/Models/Floor_ModularLOD.obj"
+dest_files=[ "res://.import/Floor_ModularLOD.obj-8de9798adbfa4b868f6b98cf72092067.mesh", "res://.import/Floor_ModularLOD.obj-8de9798adbfa4b868f6b98cf72092067.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

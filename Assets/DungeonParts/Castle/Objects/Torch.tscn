@@ -55,7 +55,6 @@ draw_pass_1 = SubResource( 5 )
 [node name="OmniLight" type="OmniLight" parent="Light"]
 transform = Transform( 0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0, 0.595886, 0 )
 light_color = Color( 1, 0.423529, 0, 1 )
-shadow_enabled = true
 shadow_bias = 0.1
 omni_range = 8.0
 omni_attenuation = 4.28709
@@ -72,4 +71,4 @@ __meta__ = {
 }
 meshName = "WallTorch"
 LODMeshes = [ ExtResource( 1 ), null ]
-triggerDistances = PoolRealArray( 0, 50 )
+triggerDistances = PoolRealArray( 0, 100 )

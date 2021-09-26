@@ -26,10 +26,12 @@ func playerMoved():
 	var distanceToPlayer = GlobalVariables.playerTranslation.distance_to(global_transform.origin)
 	if distanceToPlayer > 20:
 		$Light/OmniLight.shadow_enabled = false
+		set_process(true)
 	else:
 		$Light/OmniLight.shadow_enabled = true
+		set_process(false)
 	
-	if distanceToPlayer > 40:
+	if distanceToPlayer > 50:
 		$Light/OmniLight.visible = false
 		$Particles.visible = false
 	else:

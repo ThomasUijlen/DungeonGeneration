@@ -16,6 +16,7 @@ wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="RegularTile3" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
+spawnChance = 50
 
 [node name="RegularTile4" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
@@ -23,6 +24,7 @@ wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="RegularTile5" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4 )
+spawnChance = 50
 
 [node name="RegularTile6" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
@@ -30,6 +32,7 @@ wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="RegularTile7" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4 )
+spawnChance = 50
 
 [node name="RegularTile8" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
@@ -37,3 +40,4 @@ wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="RegularTile9" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )
+spawnChance = 50

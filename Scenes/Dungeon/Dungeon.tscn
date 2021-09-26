@@ -29,7 +29,8 @@ transform = Transform( 0.838442, 0.445204, -0.314336, 0, 0.576775, 0.816903, 0.5
 light_energy = 1.5
 shadow_enabled = true
 shadow_bias = 0.0
-shadow_contact = 0.52
+shadow_contact = 1.34
+directional_shadow_max_distance = 200.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48452, 0 )

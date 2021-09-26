@@ -16,6 +16,10 @@ export var priority = 1
 var tile
 
 func _ready():
+	if spawnChance < 100 and get_parent().roomSettings.getRandomNumber(global_transform.origin*10,0,100) < spawnChance:
+		
+		return
+	
 	var tile = TileHandler.getTile(global_transform.origin)
 	if tile != null:
 		if tile.overwriteOccupation(self):
