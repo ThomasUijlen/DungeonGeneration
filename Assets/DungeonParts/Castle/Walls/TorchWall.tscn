@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Wall_Modular.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=2]
-[ext_resource path="res://Assets/DungeonParts/Castle/Materials/WallDark.tres" type="Material" id=3]
-[ext_resource path="res://Scripts/MeshOptimization/LODMesh.cs" type="Script" id=4]
+[ext_resource path="res://Assets/DungeonParts/Castle/Objects/Torch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/DungeonParts/Castle/Materials/WallDark.tres" type="Material" id=4]
+[ext_resource path="res://Scripts/MeshOptimization/LODMesh.cs" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2, 0.248572 )
@@ -21,7 +22,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneColumn"
 LODMeshes = [ ExtResource( 2 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
@@ -31,7 +32,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneColumn"
 LODMeshes = [ ExtResource( 2 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
@@ -42,7 +43,7 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneWall"
 LODMeshes = [ ExtResource( 1 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
@@ -53,7 +54,7 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneWall"
 LODMeshes = [ ExtResource( 1 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
@@ -64,7 +65,7 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneWall"
 LODMeshes = [ ExtResource( 1 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
@@ -75,7 +76,7 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneWall"
 LODMeshes = [ ExtResource( 1 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
@@ -98,8 +99,11 @@ shape = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
 cast_shadow = 2
 mesh = SubResource( 3 )
-material/0 = ExtResource( 3 )
-script = ExtResource( 4 )
+material/0 = ExtResource( 4 )
+script = ExtResource( 5 )
 meshName = "StoneWallPlane"
 LODMeshes = [ SubResource( 3 ), null ]
 triggerDistances = PoolRealArray( 0, 50 )
+
+[node name="Torch" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 1.79918, -0.519423 )

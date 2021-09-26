@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/DungeonGeneration/DungeonLibrary.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/DungeonGeneration/BiomeSettings.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/DungeonGeneration/RoomGenerationSettings.gd" type="Script" id=3]
+[ext_resource path="res://Assets/DungeonParts/Castle/Rooms/BasicRoom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/DungeonParts/Castle/Rooms/StorageRoom.tscn" type="PackedScene" id=5]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Castle" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="Rooms" type="Node" parent="Castle"]
+
+[node name="BasicRoom" type="Node" parent="Castle/Rooms"]
+script = ExtResource( 3 )
+noiseThreshold = 0.7
+roomScene = ExtResource( 4 )
+
+[node name="StorageRoom" type="Node" parent="Castle/Rooms"]
+script = ExtResource( 3 )
+roomSeed = 1000
+noiseThreshold = 0.7
+roomScene = ExtResource( 5 )

@@ -5,31 +5,42 @@ extends Node
 var tileScene = load("res://Assets/DungeonParts/Main/Tile.tscn")
 
 const TILE_WIDTH = 4
-const PRE_LOAD_DISTANCE = 50
-const LOAD_DISTANCE = 20
+const CREATE_DISTANCE = 70
+const GENERATION_DISTANCE = 50
+const FINALIZE_DISTANCE = 20
 
 var loadedTiles = {}
 
+var rooms = []
+var entrances = []
+
 func translationToCoord(translation):
-	return (translation/TILE_WIDTH).floor()
+	return (translation/TILE_WIDTH).round()
 
 func getTile(translation):
 	var coord = translationToCoord(translation)
 	if loadedTiles.keys().has(coord):
 		return loadedTiles[coord]
-	else:
-		createTile(coord)
-		return loadedTiles[coord]
+	return null
+#	else:
+#		createTile(coord)
+#		return loadedTiles[coord]
 
 func createTile(coord):
 	var tile = tileScene.instance()
 	loadedTiles[coord] = tile
-	get_tree().current_scene.add_child(tile)
-	tile.global_transform.origin = coord*TILE_WIDTH
+	GenerationHandler.currentScene.add_child(tile)
+	tile.translation = coord*TILE_WIDTH
 
 func generateTiles():
-	for tile in loadedTiles.values():
-		tile.generate()
+	var preloadCoords = getCoordsWithinRange(GENERATION_DISTANCE)
+	
+	for coord in preloadCoords:
+		loadedTiles[coord].generate()
+	
+	var finalizeCoords = getCoordsWithinRange(FINALIZE_DISTANCE)
+	for coord in finalizeCoords:
+		loadedTiles[coord].finalize()
 
 func loadTiles():
 	pass
@@ -39,7 +50,7 @@ func refreshTiles():
 	generateTiles()
 
 func loadNewTiles():
-	var coordsInRange = getCoordsWithinRange()
+	var coordsInRange = getCoordsWithinRange(CREATE_DISTANCE)
 	
 	var oldCoords = loadedTiles.keys()
 	var unchangedCoords = []
@@ -55,20 +66,21 @@ func loadNewTiles():
 	
 #	Delete old tiles
 	for coord in oldCoords:
-		loadedTiles[coord].queue_free()
+		loadedTiles[coord].call_deferred("queue_free")
 		loadedTiles.erase(coord)
 	
 #	Create new tiles
 	for coord in newCoords:
 		createTile(coord)
 
-func getCoordsWithinRange():
-	var playerCoord = translationToCoord(GenerationHandler.currentPlayerPos)
+func getCoordsWithinRange(loadRange):
+	var playerCoord = translationToCoord(GlobalVariables.playerTranslation)
+	playerCoord.y = 0
 	
 	var coords = []
-	var preloadDistanceHalf = round(PRE_LOAD_DISTANCE/2)
-	for x in range(PRE_LOAD_DISTANCE):
-		for z in range(PRE_LOAD_DISTANCE):
+	var preloadDistanceHalf = round(loadRange/2)
+	for x in range(loadRange):
+		for z in range(loadRange):
 			coords.append(playerCoord+Vector3(x-preloadDistanceHalf,0,z-preloadDistanceHalf))
 	
 	return coords

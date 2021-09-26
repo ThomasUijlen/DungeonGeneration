@@ -13,7 +13,7 @@ var biomePriority = -1
 var currentOccupation = null
 var occupationPriority = -1
 
-var distanceToPlayer = 0.0
+var fillState = GlobalEnums.TILE_FILL_STATES.SOLID
 
 #Generation --------------------------------------------------
 #Assigns biomes and places rooms
@@ -25,11 +25,17 @@ func generate():
 	generateBiome()
 	generateRooms()
 
-
+func finalize():
+	if currentState != GlobalEnums.TILE_STATES.GENERATED:
+		return
+	
+	if currentOccupation != null:
+		currentState = GlobalEnums.TILE_STATES.FINALIZED
+		currentOccupation.finalize()
 
 func generateBiome():
 	for biome in GenerationHandler.dungeonPreset.biomes:
-		if biome.isActiveOnTile(global_transform.origin):
+		if biome.isActiveOnTile(global_transform.origin) or currentBiome == null:
 			overwriteCurrentBiome(biome)
 
 func overwriteCurrentBiome(biome):
@@ -38,16 +44,27 @@ func overwriteCurrentBiome(biome):
 		currentBiome = biome
 
 func generateRooms():
-	for room in GenerationHandler.rooms[currentBiome]:
-		pass
+	for roomSettings in GenerationHandler.dungeonPreset.rooms[currentBiome]:
+		if roomSettings.isActiveOnTile(global_transform.origin):
+			call_deferred("createRoom",roomSettings)
+
+func createRoom(roomSettings):
+	var room = roomSettings.roomScene.instance()
+	room.roomSettings = roomSettings
+	room.translation = translation
+	GenerationHandler.currentScene.add_child(room)
 
 func overwriteOccupation(occupation):
 	if occupation.priority > occupationPriority:
 		if currentOccupation != null:
-			currentOccupation.queue_free()
+			currentOccupation.call_deferred("queue_free")
 		
 		occupationPriority = occupation.priority
 		currentOccupation = occupation
 		return true
 	
 	return false
+
+func _exit_tree():
+	if currentOccupation != null:
+		currentOccupation.call_deferred("queue_free")

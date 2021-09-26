@@ -11,7 +11,7 @@ var hallways = {}
 
 export(PackedScene) var defaultTile
 
-func _ready():
+func prepare():
 	collectDungeonParts()
 
 func collectDungeonParts():

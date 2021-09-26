@@ -13,8 +13,16 @@ var randomNumberGenerator = RandomNumberGenerator.new()
 var noise = OpenSimplexNoise.new()
 var generationSeed = 0
 
+var currentScene
+
+func _ready():
+	GlobalVariables.addObserver(self)
+	currentScene = get_tree().current_scene
+
 func generateDungeon(dungeonToGenerate, generationSeed):
 	dungeonPreset = dungeonToGenerate
+	dungeonPreset.prepare()
+	
 	self.generationSeed = generationSeed
 	startThread()
 
@@ -32,7 +40,8 @@ func activateThread():
 func threadFunction(data):
 	while threadActive:
 		semaphore.wait()
-		
+		print("thread run!")
+		TileHandler.refreshTiles()
 
 #Wait for thread to finish when exiting the application to properly dispose of it
 func _notification(what):
@@ -40,23 +49,5 @@ func _notification(what):
 		threadActive = false
 		generationThread.wait_to_finish()
 
-
-
-#Generation logic ----------------------------------------------------------------------
-func getCoords
-
-
-
-#Player movement detection -------------------------------------------------------------
-#Whenever the player moves more then 1 tile, it triggers the thread to generate more tiles
-var lastPlayerPos = null
-var currentPlayerPos = null
-func _physics_process(delta):
-	if playerMoved():
-		activateThread()
-
 func playerMoved():
-	if currentPlayerPos != null and (lastPlayerPos == null or lastPlayerPos.distance_to(currentPlayerPos) > TileHandler.TILE_SIZE):
-		lastPlayerPos = currentPlayerPos
-		return true
-	return false
+	activateThread()

@@ -5,10 +5,25 @@ export var acceleration = 10
 export var damp = 1
 export var gravityAcceleration = 1.0
 
+enum CONTROL_SCHEMES {
+	NORMAL,
+	FREE_CAM
+}
+var currentControlScheme = CONTROL_SCHEMES.NORMAL
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
+	GlobalVariables.playerTranslation = global_transform.origin
+	
+	match(currentControlScheme):
+		CONTROL_SCHEMES.NORMAL:
+			normalControls(delta)
+		CONTROL_SCHEMES.FREE_CAM:
+			freeCamControls(delta)
+
+func normalControls(delta):
 	$Body/MovementHelper.translation = moveDirection.normalized()*delta*100
 	linear_velocity += $Body/MovementHelper.global_transform.origin-global_transform.origin
 	
@@ -19,6 +34,14 @@ func _physics_process(delta):
 		linear_velocity.y = 0.0
 	else:
 		linear_velocity.y -= gravityAcceleration*delta
+
+func freeCamControls(delta):
+	$Body/Head/MovementHelper.translation = moveDirection.normalized()*delta*100
+	linear_velocity += $Body/Head/MovementHelper.global_transform.origin-$Body/Head.global_transform.origin
+	
+	linear_velocity.x = lerp(linear_velocity.x,0,delta*damp)
+	linear_velocity.z = lerp(linear_velocity.z,0,delta*damp)
+	linear_velocity.y = lerp(linear_velocity.y,0,delta*damp)
 
 func grounded():
 	return $DownRay.is_colliding()
@@ -63,3 +86,12 @@ func _input(event):
 	if event.is_action_released("Right"):
 		moveDirection.x -= 1
 		return
+	
+	if event.is_action_pressed("FreeCam"):
+		match(currentControlScheme):
+			CONTROL_SCHEMES.NORMAL:
+				currentControlScheme = CONTROL_SCHEMES.FREE_CAM
+				$CollisionShape.disabled = true
+			CONTROL_SCHEMES.FREE_CAM:
+				currentControlScheme = CONTROL_SCHEMES.NORMAL
+				$CollisionShape.disabled = false

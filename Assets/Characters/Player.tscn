@@ -34,3 +34,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.603714, 0 )
 
 [node name="Camera" type="Camera" parent="RigidBody/Body/Head"]
 current = true
+far = 1e+06
+
+[node name="MovementHelper" type="Spatial" parent="RigidBody/Body/Head"]
