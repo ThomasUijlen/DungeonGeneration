@@ -1,7 +1,10 @@
 extends Spatial
 
-export var entranceAmount = 1
+var settings
+var noise = 0.0
 
-var tiles = []
-var roomSettings
-var ID = 0
+func _ready():
+	call_deferred("registerPlacedRoom")
+
+func registerPlacedRoom():
+	TileHandler.roomsWaitingForPlacement -= 1

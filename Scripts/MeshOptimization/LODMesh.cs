@@ -69,20 +69,20 @@ namespace Lod
         //     removeMesh();
         //     base._ExitTree();
         // }
-        public override void _EnterTree()
-        {
-            if(currentMultimesh == null) {
-                CallDeferred("drawMesh");
-                integrateMesh();
-            }
-        }
+        // public override void _EnterTree()
+        // {
+        //     if(currentMultimesh == null) {
+        //         CallDeferred("drawMesh");
+        //         integrateMesh();
+        //     }
+        // }
 
-        public override void _ExitTree()
-        {
-            if(currentMultimesh != null) {
-                currentMultimesh.CallDeferred("removeMesh",this);
-                currentMultimesh = null;
-            }
-        }
+        // public override void _ExitTree()
+        // {
+        //     if(currentMultimesh != null) {
+        //         currentMultimesh.CallDeferred("removeMesh",this);
+        //         currentMultimesh = null;
+        //     }
+        // }
     }
 }

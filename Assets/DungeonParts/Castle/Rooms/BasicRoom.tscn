@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Tiles/RegularTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/DungeonGeneration/Room.gd" type="Script" id=2]
 [ext_resource path="res://Assets/DungeonParts/Castle/Walls/RegularWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/DungeonParts/Castle/Walls/TorchWall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/DungeonParts/Castle/Walls/RegularDoor.tscn" type="PackedScene" id=5]
 
 [node name="BasicRoom" type="Spatial"]
 script = ExtResource( 2 )
@@ -13,6 +14,7 @@ script = ExtResource( 2 )
 [node name="RegularTile2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
 wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
+doorTypes = [ ExtResource( 5 ) ]
 
 [node name="RegularTile3" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4 )
@@ -21,6 +23,7 @@ spawnChance = 50
 [node name="RegularTile4" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
 wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
+doorTypes = [ ExtResource( 5 ) ]
 
 [node name="RegularTile5" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4 )
@@ -29,6 +32,7 @@ spawnChance = 50
 [node name="RegularTile6" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
 wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
+doorTypes = [ ExtResource( 5 ) ]
 
 [node name="RegularTile7" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4 )
@@ -37,6 +41,7 @@ spawnChance = 50
 [node name="RegularTile8" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 wallTypes = [ ExtResource( 3 ), ExtResource( 4 ) ]
+doorTypes = [ ExtResource( 5 ) ]
 
 [node name="RegularTile9" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )

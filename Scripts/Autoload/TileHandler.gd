@@ -2,8 +2,6 @@ extends Node
 
 #Responsible for all communication with tiles. Also keeps track of all loaded tiles.
 
-var tileScene = load("res://Assets/DungeonParts/Main/Tile.tscn")
-
 const TILE_WIDTH = 4
 const CREATE_DISTANCE = 70
 const GENERATION_DISTANCE = 50
@@ -11,8 +9,14 @@ const FINALIZE_DISTANCE = 20
 
 var loadedTiles = {}
 
-var rooms = []
-var entrances = []
+var roomsWaitingForPlacement = 0
+var roomsPlaced = []
+var doorsWaitingForConnection = []
+var doorsWaitingForPlacement = 0
+var doorsPlaced = []
+var hallWaysWaitingForConnection = 0
+var hallWaysPlaced = []
+var wallList = {}
 
 func translationToCoord(translation):
 	return (translation/TILE_WIDTH).round()
@@ -22,12 +26,9 @@ func getTile(translation):
 	if loadedTiles.keys().has(coord):
 		return loadedTiles[coord]
 	return null
-#	else:
-#		createTile(coord)
-#		return loadedTiles[coord]
 
 func createTile(coord):
-	var tile = tileScene.instance()
+	var tile = GlobalPackedScenes.tileScene.instance()
 	loadedTiles[coord] = tile
 	GenerationHandler.currentScene.add_child(tile)
 	tile.translation = coord*TILE_WIDTH
@@ -42,8 +43,11 @@ func generateTiles():
 	for coord in finalizeCoords:
 		loadedTiles[coord].finalize()
 
-func loadTiles():
-	pass
+func connectDoors():
+	if doorsWaitingForPlacement > 0:
+		return
+	
+	
 
 func refreshTiles():
 	loadNewTiles()
@@ -84,3 +88,14 @@ func getCoordsWithinRange(loadRange):
 			coords.append(playerCoord+Vector3(x-preloadDistanceHalf,0,z-preloadDistanceHalf))
 	
 	return coords
+
+func canOverwriteWall(translation,priority):
+	if !wallList.has(translation):
+		return true
+	
+	
+	if wallList[translation].priority < priority:
+		wallList[translation].call_deferred("queue_free")
+		return true
+	else:
+		return false

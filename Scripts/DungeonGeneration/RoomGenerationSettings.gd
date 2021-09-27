@@ -9,13 +9,16 @@ export var noiseThreshold = 0.95
 
 export(PackedScene) var roomScene
 
+var lastGeneratedNoiseValue = 0.0
+
 func isActiveOnTile(translation):
 	return getNoise(translation) > noiseThreshold
 
 func getNoise(translation):
 	GenerationHandler.noise.seed = roomSeed + GenerationHandler.generationSeed
 	GenerationHandler.noise.period = period
-	return (GenerationHandler.noise.get_noise_3d(translation.x,translation.y,translation.z) + 1)/2.0
+	lastGeneratedNoiseValue = (GenerationHandler.noise.get_noise_3d(translation.x,translation.y,translation.z) + 1)/2.0
+	return lastGeneratedNoiseValue
 
 func getRandomNumber(translation,mi,ma):
 	GenerationHandler.randomNumberGenerator.seed = roomSeed + translation.length()

@@ -11,21 +11,28 @@ export(Array,PackedScene) var doorTypes
 export var doorSpawnChance = 100
 
 export(int,0,100, 1) var spawnChance = 100
+
+export var accessible = true
 export var priority = 1
+
+export var partOfRoom = true
 
 var tile
 
 func _ready():
-	if spawnChance < 100 and get_parent().roomSettings.getRandomNumber(global_transform.origin*10,0,100) < spawnChance:
-		
+	if spawnChance < 100 and get_parent().settings.getRandomNumber(global_transform.origin*10,0,100) < spawnChance:
+		call_deferred("queue_free")
 		return
+	
+	priority += get_parent().noise
 	
 	var tile = TileHandler.getTile(global_transform.origin)
 	if tile != null:
 		if tile.overwriteOccupation(self):
 			self.tile = tile
+			return
 	
-#	call_deferred("queue_free")
+	call_deferred("queue_free")
 
 
 func finalize():
@@ -37,7 +44,7 @@ func finalize():
 func placeWall(side):
 	$WallPlacementHelper.translation = side.translation*1.1
 	var neighbouringTile = TileHandler.getTile($WallPlacementHelper.global_transform.origin)
-	var wallType = chooseWall(neighbouringTile)
+	var wallType = chooseWall(neighbouringTile,side)
 	
 	if wallType != null:
 		call_deferred("createWall",side,wallType)
@@ -46,19 +53,20 @@ func createWall(side,wallType):
 	var wall = wallType.instance()
 	side.call_deferred("add_child",wall)
 
-func chooseWall(neighbouringTile):
-	if neighbouringTile.currentOccupation != null:
+func chooseWall(neighbouringTile,side):
+	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.get_parent() == tile.currentOccupation.get_parent():
 		return null
 	
-	if doorTypes.size() > 0:
-		if get_parent().roomSettings.getRandomNumber(global_transform.origin,0,100) > doorSpawnChance:
-			return doorTypes[get_parent().roomSettings.getRandomNumber(global_transform.origin*10,0,doorTypes.size()-1)]
+	if doorTypes.size() > 0 and neighbouringTile.fillState == GlobalEnums.TILE_FILL_STATES.HOLLOW:
+		if get_parent().settings.getRandomNumber(side.global_transform.origin,0,100) < doorSpawnChance:
+			TileHandler.doorsWaitingForPlacement += 1
+			return doorTypes[get_parent().settings.getRandomNumber(side.global_transform.origin*10,0,doorTypes.size()-1)]
 	
 	if windowTypes.size() > 0 and neighbouringTile.fillState == GlobalEnums.TILE_FILL_STATES.HOLLOW:
-		if get_parent().roomSettings.getRandomNumber(global_transform.origin,0,100) > windowSpawnChance:
-			return windowTypes[get_parent().roomSettings.getRandomNumber(global_transform.origin*10,0,windowTypes.size()-1)]
+		if get_parent().settings.getRandomNumber(side.global_transform.origin,0,100) < windowSpawnChance:
+			return windowTypes[get_parent().settings.getRandomNumber(side.global_transform.origin*10,0,windowTypes.size()-1)]
 	
-	return wallTypes[get_parent().roomSettings.getRandomNumber(global_transform.origin*10,0,wallTypes.size()-1)]
+	return wallTypes[get_parent().settings.getRandomNumber(side.global_transform.origin*10,0,wallTypes.size()-1)]
 
 #func addWalls(frontWallType, backWallType, leftWallType, rightWallType):
 #	placeWall($Front, frontWallType)

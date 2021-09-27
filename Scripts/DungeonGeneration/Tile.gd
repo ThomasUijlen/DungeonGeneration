@@ -46,11 +46,12 @@ func overwriteCurrentBiome(biome):
 func generateRooms():
 	for roomSettings in GenerationHandler.dungeonPreset.rooms[currentBiome]:
 		if roomSettings.isActiveOnTile(global_transform.origin):
-			call_deferred("createRoom",roomSettings)
+			TileHandler.roomsWaitingForPlacement += 1
+			call_deferred("createRoom",roomSettings,roomSettings.lastGeneratedNoiseValue)
 
-func createRoom(roomSettings):
+func createRoom(roomSettings,noiseValue):
 	var room = roomSettings.roomScene.instance()
-	room.roomSettings = roomSettings
+	room.settings = roomSettings
 	room.translation = translation
 	GenerationHandler.currentScene.add_child(room)
 
@@ -61,6 +62,7 @@ func overwriteOccupation(occupation):
 		
 		occupationPriority = occupation.priority
 		currentOccupation = occupation
+		fillState = currentOccupation.fillType
 		return true
 	
 	return false
