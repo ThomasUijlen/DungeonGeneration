@@ -25,6 +25,7 @@ func generateDungeon(dungeonToGenerate, generationSeed):
 	
 	self.generationSeed = generationSeed
 	startThread()
+	activateThread()
 
 
 
