@@ -3,8 +3,8 @@ extends Node
 #Responsible for all communication with tiles. Also keeps track of all loaded tiles.
 
 const TILE_WIDTH = 4
-const CREATE_DISTANCE = 70
-const GENERATION_DISTANCE = 50
+const CREATE_DISTANCE = 40
+const GENERATION_DISTANCE = 30
 const FINALIZE_DISTANCE = 20
 
 var loadedTiles = {}
