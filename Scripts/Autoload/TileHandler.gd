@@ -94,7 +94,8 @@ func canOverwriteWall(translation,priority):
 		return true
 	
 	if wallList[translation].priority < priority:
-		wallList[translation].get_parent().remove_child(wallList[translation])
+		if wallList[translation].get_parent() != null:
+			wallList[translation].get_parent().remove_child(wallList[translation])
 		return true
 	else:
 		return false

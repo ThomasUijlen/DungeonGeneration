@@ -57,7 +57,7 @@ func placeWall(side):
 func createWall(side,wallType):
 	var wall = wallType.instance()
 	if wall.checkPlacement(side.global_transform.origin):
-		side.add_child(wall)
+		side.call_deferred("add_child",wall)
 
 func chooseWall(neighbouringTile,side):
 	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.get_parent() == tile.currentOccupation.get_parent():
