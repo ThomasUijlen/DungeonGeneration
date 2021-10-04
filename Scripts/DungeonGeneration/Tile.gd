@@ -69,4 +69,4 @@ func overwriteOccupation(occupation):
 
 func _exit_tree():
 	if currentOccupation != null:
-		currentOccupation.call_deferred("queue_free")
+		currentOccupation.queue_free()

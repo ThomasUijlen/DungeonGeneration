@@ -1,13 +1,13 @@
 extends "res://Scripts/DungeonGeneration/Wall.gd"
 
-func _ready():
-	call_deferred("registerPlacedDoor")
-
-func registerPlacedDoor():
-	TileHandler.doorsWaitingForPlacement -= 1
-	
-	if hasFreeSpace():
-		TileHandler.doorsWaitingForConnection.append(self)
+#func _ready():
+#	call_deferred("registerPlacedDoor")
+#
+#func registerPlacedDoor():
+#	TileHandler.doorsWaitingForPlacement -= 1
+#
+#	if hasFreeSpace():
+#		TileHandler.doorsWaitingForConnection.append(self)
 
 func hasFreeSpace():
 	var neighbourPositionHelper = Spatial.new()

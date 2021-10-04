@@ -70,7 +70,7 @@ func loadNewTiles():
 	
 #	Delete old tiles
 	for coord in oldCoords:
-		loadedTiles[coord].call_deferred("queue_free")
+		loadedTiles[coord].queue_free()
 		loadedTiles.erase(coord)
 	
 #	Create new tiles
@@ -93,9 +93,9 @@ func canOverwriteWall(translation,priority):
 	if !wallList.has(translation):
 		return true
 	
-	
 	if wallList[translation].priority < priority:
-		wallList[translation].call_deferred("queue_free")
+		wallList[translation].get_parent().remove_child(wallList[translation])
+#		wallList[translation].call_deferred("queue_free")
 		return true
 	else:
 		return false

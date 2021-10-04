@@ -19,6 +19,8 @@ export var partOfRoom = true
 
 var tile
 
+var finalized = false
+
 func _ready():
 	if spawnChance < 100 and get_parent().settings.getRandomNumber(global_transform.origin*10,0,100) < spawnChance:
 		call_deferred("queue_free")
@@ -36,6 +38,9 @@ func _ready():
 
 
 func finalize():
+	if finalized:
+		return
+	finalized = true
 	placeWall($Front)
 	placeWall($Back)
 	placeWall($Left)
@@ -47,11 +52,15 @@ func placeWall(side):
 	var wallType = chooseWall(neighbouringTile,side)
 	
 	if wallType != null:
-		call_deferred("createWall",side,wallType)
+		createWall(side,wallType)
+#		call_deferred("createWall",side,wallType)
 
 func createWall(side,wallType):
 	var wall = wallType.instance()
-	side.call_deferred("add_child",wall)
+	if wall.checkPlacement(side.global_transform.origin):
+		side.add_child(wall)
+#	else:
+#		wall.queue_free()
 
 func chooseWall(neighbouringTile,side):
 	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.get_parent() == tile.currentOccupation.get_parent():
