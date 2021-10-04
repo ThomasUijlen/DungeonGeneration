@@ -53,14 +53,11 @@ func placeWall(side):
 	
 	if wallType != null:
 		createWall(side,wallType)
-#		call_deferred("createWall",side,wallType)
 
 func createWall(side,wallType):
 	var wall = wallType.instance()
 	if wall.checkPlacement(side.global_transform.origin):
 		side.add_child(wall)
-#	else:
-#		wall.queue_free()
 
 func chooseWall(neighbouringTile,side):
 	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.get_parent() == tile.currentOccupation.get_parent():
@@ -76,23 +73,4 @@ func chooseWall(neighbouringTile,side):
 			return windowTypes[get_parent().settings.getRandomNumber(side.global_transform.origin*10,0,windowTypes.size()-1)]
 	
 	return wallTypes[get_parent().settings.getRandomNumber(side.global_transform.origin*10,0,wallTypes.size()-1)]
-
-#func addWalls(frontWallType, backWallType, leftWallType, rightWallType):
-#	placeWall($Front, frontWallType)
-#	placeWall($Back, backWallType)
-#	placeWall($Left, leftWallType)
-#	placeWall($Right, rightWallType)
-#
-#func placeWall(location, type):
-#	match(type):
-#		GlobalEnums.WALL_SETTINGS.NO_WALL:
-#			pass
-#		GlobalEnums.WALL_SETTINGS.WALL:
-#			pass
-#		GlobalEnums.WALL_SETTINGS.WINDOW:
-#			pass
-#		GlobalEnums.WALL_SETTINGS.DOOR:
-#			pass
-#		GlobalEnums.WALL_SETTINGS.RANDOM:
-#			pass
 

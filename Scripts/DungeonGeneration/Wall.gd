@@ -9,9 +9,6 @@ func checkPlacement(translation):
 		return true
 	return false
 
-#func _process(delta):
-#	call_deferred("queue_free")
-
 func _exit_tree():
 	if TileHandler.wallList.has(global_transform.origin):
 		if TileHandler.wallList[global_transform.origin] == self:
