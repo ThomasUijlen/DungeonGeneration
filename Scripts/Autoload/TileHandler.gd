@@ -11,11 +11,10 @@ var loadedTiles = {}
 
 var roomsWaitingForPlacement = 0
 var roomsPlaced = []
-var doorsWaitingForConnection = []
-var doorsWaitingForPlacement = 0
+var wallsWaitingForPlacement = 0
 var doorsPlaced = []
 var hallWaysWaitingForConnection = 0
-var hallWaysPlaced = []
+#var hallWaysPlaced = []
 var wallList = {}
 
 func translationToCoord(translation):
@@ -44,14 +43,23 @@ func generateTiles():
 		loadedTiles[coord].finalize()
 
 func connectDoors():
-	if doorsWaitingForPlacement > 0:
+	if wallsWaitingForPlacement > 0:
 		return
 	
-	
+	for door in doorsPlaced:
+		for possibleConnection in doorsPlaced:
+			if !door.connectedTo.has(possibleConnection) and door.global_transform.origin.distance_to(possibleConnection.global_transform.origin) < 10:
+				connectWithHallway(door,possibleConnection)
+
+func connectWithHallway(a,b):
+	var hallWay = GlobalPackedScenes.hallWayScene.instance()
+	GenerationHandler.currentScene.add_child(hallWay)
+	hallWay.findPath(a,b)
 
 func refreshTiles():
 	loadNewTiles()
 	generateTiles()
+	connectDoors()
 
 func loadNewTiles():
 	var coordsInRange = getCoordsWithinRange(CREATE_DISTANCE)
@@ -96,6 +104,8 @@ func canOverwriteWall(translation,priority):
 	if wallList[translation].priority < priority:
 		if wallList[translation].get_parent() != null:
 			wallList[translation].get_parent().remove_child(wallList[translation])
+		else:
+			wallList.call_deferred("queue_free")
 		return true
 	else:
 		return false

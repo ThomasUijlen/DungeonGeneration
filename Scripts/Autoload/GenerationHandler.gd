@@ -47,8 +47,8 @@ func threadFunction(data):
 
 func checkForThreadRerun():
 	print(TileHandler.roomsWaitingForPlacement)
-	print(TileHandler.doorsWaitingForConnection.size())
-	if TileHandler.roomsWaitingForPlacement > 0 or TileHandler.doorsWaitingForConnection.size() > 0:
+	print(TileHandler.wallsWaitingForPlacement)
+	if TileHandler.roomsWaitingForPlacement > 0 or TileHandler.wallsWaitingForPlacement > 0:
 		print("thread rerun")
 		semaphore.post()
 

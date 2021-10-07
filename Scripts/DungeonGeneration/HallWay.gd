@@ -16,6 +16,7 @@ var noise = 0.0
 var hallWayScene
 
 func findPath(a,b):
+	print("findPath")
 	pathFound = false
 	startingCoord = TileHandler.translationToCoord(a.global_transform.origin)
 	targetCoord = TileHandler.translationToCoord(b.global_transform.origin)
@@ -24,10 +25,15 @@ func findPath(a,b):
 	startCoord["score"] = startCoord["distanceToTarget"] + startCoord["stepsFromStart"]
 	availableCoords.append(startCoord)
 	
-	while !pathFound and availableCoords.size() > 0:
+	while !pathFound and availableCoords.size() > 0 and availableCoords.size() < 100:
+		print("find!")
+		print(pathFound)
+		print(availableCoords.size())
 		explore()
+	print("found!")
 	
-	buildPath()
+	if pathFound:
+		buildPath()
 	
 	foundPath = []
 	availableCoords = []
@@ -54,13 +60,14 @@ func collectPath(endCoord):
 
 func buildPath():
 	for coord in foundPath:
-		call_deferred("placeTile",coord)
+		placeTile(coord)
+#		call_deferred("placeTile",coord)
 
 func placeTile(coord):
 	var tile = hallWayScene.instance()
 	tile.translation = coord["coord"]
 	tile.partOfRoom = false
-	add_child(tile)
+	GenerationHandler.currentScene.add_child(tile)
 
 func exploreAroundCoord(coord):
 	addCoordToAvailableList(coord, coord["coord"] + Vector3(-TileHandler.TILE_WIDTH,0,0))
@@ -70,12 +77,12 @@ func exploreAroundCoord(coord):
 
 func addCoordToAvailableList(origin, coordToExplore):
 	var tile = TileHandler.getTile(coordToExplore)
-	if tile == null or tile.currentOccupation == null or tile.currentOccupation.partOfRoom:
+	if tile == null or (tile.currentOccupation != null and tile.currentOccupation.partOfRoom):
 		return
 	
 	var newCoord = {"previousCoord": origin, "coord": coordToExplore, "distanceToTarget": coordToExplore.distance_to(targetCoord), "stepsFromStart": origin["stepsFromStart"] + 1}
 	newCoord["score"] = newCoord["distanceToTarget"] + newCoord["stepsFromStart"]
-	availableCoords.append(availableCoords)
+	availableCoords.append(newCoord)
 
 func getLowestScoreCoord():
 	var lowestScoreCoord = null

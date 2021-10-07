@@ -2,10 +2,15 @@ extends Spatial
 
 export var priority = 0
 
+func _ready():
+	call_deferred("registerPlacedWall")
+
+func registerPlacedWall():
+	TileHandler.wallsWaitingForPlacement -= 1
+
 func checkPlacement(translation):
 	if TileHandler.canOverwriteWall(translation,priority):
 		TileHandler.wallList[translation] = self
-		set_process(false)
 		return true
 	return false
 

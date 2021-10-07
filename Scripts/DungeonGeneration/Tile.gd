@@ -48,6 +48,7 @@ func generateRooms():
 		if roomSettings.isActiveOnTile(global_transform.origin):
 			TileHandler.roomsWaitingForPlacement += 1
 			call_deferred("createRoom",roomSettings,roomSettings.lastGeneratedNoiseValue)
+			return
 
 func createRoom(roomSettings,noiseValue):
 	var room = roomSettings.roomScene.instance()

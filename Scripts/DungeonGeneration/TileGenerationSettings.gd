@@ -57,15 +57,15 @@ func placeWall(side):
 func createWall(side,wallType):
 	var wall = wallType.instance()
 	if wall.checkPlacement(side.global_transform.origin):
+		TileHandler.wallsWaitingForPlacement += 1
 		side.call_deferred("add_child",wall)
 
 func chooseWall(neighbouringTile,side):
 	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.get_parent() == tile.currentOccupation.get_parent():
 		return null
 	
-	if doorTypes.size() > 0 and neighbouringTile.fillState == GlobalEnums.TILE_FILL_STATES.HOLLOW:
+	if doorTypes.size() > 0:
 		if get_parent().settings.getRandomNumber(side.global_transform.origin,0,100) < doorSpawnChance:
-			TileHandler.doorsWaitingForPlacement += 1
 			return doorTypes[get_parent().settings.getRandomNumber(side.global_transform.origin*10,0,doorTypes.size()-1)]
 	
 	if windowTypes.size() > 0 and neighbouringTile.fillState == GlobalEnums.TILE_FILL_STATES.HOLLOW:

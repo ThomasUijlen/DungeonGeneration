@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/DungeonGeneration/DungeonLibrary.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/DungeonGeneration/BiomeSettings.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/DungeonParts/Castle/Rooms/BasicRoom.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/DungeonParts/Castle/Rooms/StorageRoom.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/DungeonGeneration/HallWaySettings.gd" type="Script" id=6]
+[ext_resource path="res://Assets/DungeonParts/Castle/Hallways/RegularHallway.tscn" type="PackedScene" id=7]
 
 [node name="Dungeon" type="Node"]
 script = ExtResource( 1 )
@@ -17,16 +18,17 @@ script = ExtResource( 2 )
 
 [node name="BasicRoom" type="Node" parent="Castle/Rooms"]
 script = ExtResource( 3 )
-noiseThreshold = 0.65
+noiseThreshold = 0.7
 roomScene = ExtResource( 4 )
 
 [node name="StorageRoom" type="Node" parent="Castle/Rooms"]
 script = ExtResource( 3 )
 roomSeed = 1000
-noiseThreshold = 0.65
+noiseThreshold = 0.7
 roomScene = ExtResource( 5 )
 
 [node name="Hallways" type="Node" parent="Castle"]
 
 [node name="HallWay1" type="Node" parent="Castle/Hallways"]
 script = ExtResource( 6 )
+hallWayScene = ExtResource( 7 )
