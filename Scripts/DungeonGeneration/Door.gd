@@ -13,7 +13,7 @@ var connectedTo = []
 func hasFreeSpace():
 	var neighbourPositionHelper = Spatial.new()
 	add_child(neighbourPositionHelper)
-	neighbourPositionHelper.translation.z -= TileHandler.TILE_WIDTH
+	neighbourPositionHelper.translation.z += TileHandler.TILE_WIDTH
 	
 	neighbouringTile = TileHandler.getTile(neighbourPositionHelper.global_transform.origin)
 	neighbourPositionHelper.queue_free()

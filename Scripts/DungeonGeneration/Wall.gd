@@ -1,6 +1,7 @@
 extends Spatial
 
 export var priority = 0
+var tile
 
 func _ready():
 	call_deferred("registerPlacedWall")

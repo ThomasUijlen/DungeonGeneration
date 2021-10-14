@@ -11,6 +11,19 @@ export(PackedScene) var hallWayScene
 
 var lastGeneratedNoiseValue = 0.0
 
+func isActiveOnTile(translation):
+	return getNoise(translation) > noiseThreshold
+
+func getNoise(translation):
+	if translation.x == 0 and translation.z == 0:
+		lastGeneratedNoiseValue = 1
+		return lastGeneratedNoiseValue
+	
+	GenerationHandler.noise.seed = hallWaySeed + GenerationHandler.generationSeed
+	GenerationHandler.noise.period = period
+	lastGeneratedNoiseValue = (GenerationHandler.noise.get_noise_3d(translation.x,translation.y,translation.z) + 1)/2.0
+	return lastGeneratedNoiseValue
+
 func getRandomNumber(translation,mi,ma):
 	GenerationHandler.randomNumberGenerator.seed = hallWaySeed + translation.length()
 	return GenerationHandler.randomNumberGenerator.randi_range(mi,ma)

@@ -48,12 +48,18 @@ func connectDoors():
 	
 	for door in doorsPlaced:
 		for possibleConnection in doorsPlaced:
-			if !door.connectedTo.has(possibleConnection) and door.global_transform.origin.distance_to(possibleConnection.global_transform.origin) < 10:
+			if door != possibleConnection and !door.connectedTo.has(possibleConnection) and door.global_transform.origin.distance_to(possibleConnection.global_transform.origin) < 30:
 				connectWithHallway(door,possibleConnection)
 
 func connectWithHallway(a,b):
+	var hallWaySetting = null
+	for hallWaySettings in GenerationHandler.dungeonPreset.hallways[a.tile.currentBiome]:
+		if hallWaySettings.isActiveOnTile(a.global_transform.origin) or hallWaySetting == null:
+			hallWaySetting = hallWaySettings
+	
 	var hallWay = GlobalPackedScenes.hallWayScene.instance()
 	GenerationHandler.currentScene.add_child(hallWay)
+	hallWay.hallWayScene = hallWaySetting.hallWayScene
 	hallWay.findPath(a,b)
 
 func refreshTiles():

@@ -58,6 +58,7 @@ func createWall(side,wallType):
 	var wall = wallType.instance()
 	if wall.checkPlacement(side.global_transform.origin):
 		TileHandler.wallsWaitingForPlacement += 1
+		wall.tile = tile
 		side.call_deferred("add_child",wall)
 
 func chooseWall(neighbouringTile,side):
