@@ -22,6 +22,10 @@ GlobalEnums="*res://Scripts/Autoload/GlobalEnums.gd"
 GlobalPackedScenes="*res://Scripts/Autoload/GlobalPackedScenes.gd"
 GlobalVariables="*res://Scripts/Autoload/GlobalVariables.gd"
 
+[display]
+
+window/size/fullscreen=true
+
 [input]
 
 Left={

@@ -16,31 +16,40 @@ var noise = 0.0
 
 var hallWayScene
 
-func findPath(a,b):
-	print("findPath")
+func findPath(a,b,settings):
+	print("find path!")
+	if a.neighbouringTile == null or b.neighbouringTile == null:
+		return
+	
+	self.settings = settings
 	pathFound = false
+	
 	startingCoord = TileHandler.translationToCoord(a.neighbouringTile.global_transform.origin)
 	targetCoord = TileHandler.translationToCoord(b.neighbouringTile.global_transform.origin)
-	print(startingCoord)
-	print(targetCoord)
+	a.connectedTo.append(b)
+	b.connectedTo.append(a)
 	
 	var startCoord = {"coord": startingCoord, "distanceToTarget": startingCoord.distance_to(targetCoord), "stepsFromStart": 0}
 	startCoord["score"] = startCoord["distanceToTarget"] + startCoord["stepsFromStart"]
 	availableCoords.append(startCoord)
 	
-	while !pathFound and availableCoords.size() > 0 and availableCoords.size() < 50:
+	var tries = 0
+	while !pathFound and availableCoords.size() > 0 and availableCoords.size() < 50 and tries < 50:
+		print("find path")
+		tries += 1
 		explore()
-	print(pathFound)
+	
+	if pathFound:
+		a.connectDoor()
+		b.connectDoor()
 	
 	foundPath = []
 	availableCoords = []
+	print("path found")
 
 func explore():
 	var coordToExplore = getLowestScoreCoord()
-#	print("----------------------------")
-#	print(coordToExplore["coord"])
-#	print(targetCoord)
-#	print(checkedCoords.has(coordToExplore["coord"]))
+	
 	if coordToExplore["coord"] == targetCoord:
 		pathFound = true
 		collectPath(coordToExplore)
@@ -51,12 +60,9 @@ func explore():
 
 func collectPath(endCoord):
 	var currentCoord = endCoord
-	print("collectPath")
+	
 	while true:
-#		print("---")
 #		print(currentCoord)
-#		print(startingCoord)
-		
 		foundPath.append(currentCoord)
 		
 		if currentCoord["coord"] == startingCoord:
@@ -65,17 +71,16 @@ func collectPath(endCoord):
 		currentCoord = currentCoord["previousCoord"]
 
 func buildPath():
-	print(foundPath)
 	for coord in foundPath:
-		print("tile!")
-		call_deferred("placeTile",coord)
-#		call_deferred("placeTile",coord)
+		call_deferred("placeTile",coord,settings)
 
-func placeTile(coord):
+func placeTile(coord,settings):
+	print("place tile")
 	var tile = hallWayScene.instance()
-	tile.translation = coord["coord"]
-	print(tile.translation)
+	tile.settings = settings
+	tile.translation = coord["coord"]*TileHandler.TILE_WIDTH
 	GenerationHandler.currentScene.add_child(tile)
+	print("tile placed")
 
 func exploreAroundCoord(coord):
 	addCoordToAvailableList(coord, coord["coord"] + Vector3(-1,0,0))

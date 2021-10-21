@@ -35,7 +35,7 @@ func finalize():
 
 func generateBiome():
 	for biome in GenerationHandler.dungeonPreset.biomes:
-		if biome.isActiveOnTile(global_transform.origin) or currentBiome == null:
+		if biome.isActiveOnTile(translation) or currentBiome == null:
 			overwriteCurrentBiome(biome)
 
 func overwriteCurrentBiome(biome):
@@ -45,7 +45,7 @@ func overwriteCurrentBiome(biome):
 
 func generateRooms():
 	for roomSettings in GenerationHandler.dungeonPreset.rooms[currentBiome]:
-		if roomSettings.isActiveOnTile(global_transform.origin):
+		if roomSettings.isActiveOnTile(translation):
 			TileHandler.roomsWaitingForPlacement += 1
 			call_deferred("createRoom",roomSettings,roomSettings.lastGeneratedNoiseValue)
 			return
@@ -54,7 +54,8 @@ func createRoom(roomSettings,noiseValue):
 	var room = roomSettings.roomScene.instance()
 	room.settings = roomSettings
 	room.translation = translation
-	GenerationHandler.currentScene.add_child(room)
+	room.rotation_degrees.y = 90*roomSettings.getRandomNumber(translation,0,4)
+	GenerationHandler.currentScene.call_deferred("add_child",room)
 
 func overwriteOccupation(occupation):
 	if occupation.priority > occupationPriority:
@@ -70,4 +71,4 @@ func overwriteOccupation(occupation):
 
 func _exit_tree():
 	if currentOccupation != null:
-		currentOccupation.queue_free()
+		currentOccupation.call_deferred("queue_free")

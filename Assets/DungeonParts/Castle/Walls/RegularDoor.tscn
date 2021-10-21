@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Assets/DungeonParts/Castle/Models/Arch_Door.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Arch.tres" type="ArrayMesh" id=2]
 [ext_resource path="res://Scripts/DungeonGeneration/Door.gd" type="Script" id=3]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=5]
@@ -11,6 +12,9 @@ extents = Vector3( 0.408, 2, 0.377 )
 extents = Vector3( 0.55, 2, 0.55 )
 
 [sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.28605, 1.53022, 0.310333 )
 
 [node name="RegularWall" type="Spatial"]
 script = ExtResource( 3 )
@@ -58,5 +62,19 @@ shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+visible = false
 mesh = SubResource( 3 )
 material/0 = null
+
+[node name="Arch_Door" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="StaticBody2" type="StaticBody" parent="Arch_Door"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Arch_Door/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6317, 0 )
+shape = SubResource( 4 )

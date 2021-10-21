@@ -29,7 +29,7 @@ func getTile(translation):
 func createTile(coord):
 	var tile = GlobalPackedScenes.tileScene.instance()
 	loadedTiles[coord] = tile
-	GenerationHandler.currentScene.add_child(tile)
+	GenerationHandler.currentScene.call_deferred("add_child",tile)
 	tile.translation = coord*TILE_WIDTH
 
 func generateTiles():
@@ -48,7 +48,7 @@ func connectDoors():
 	
 	for door in doorsPlaced:
 		for possibleConnection in doorsPlaced:
-			if door != possibleConnection and !door.connectedTo.has(possibleConnection) and door.global_transform.origin.distance_to(possibleConnection.global_transform.origin) < 30:
+			if door != possibleConnection and !door.connectedTo.has(possibleConnection) and door.global_transform.origin.distance_to(possibleConnection.global_transform.origin) < 10:
 				connectWithHallway(door,possibleConnection)
 
 func connectWithHallway(a,b):
@@ -58,14 +58,16 @@ func connectWithHallway(a,b):
 			hallWaySetting = hallWaySettings
 	
 	var hallWay = GlobalPackedScenes.hallWayScene.instance()
-	GenerationHandler.currentScene.add_child(hallWay)
+	GenerationHandler.currentScene.call_deferred("add_child",hallWay)
 	hallWay.hallWayScene = hallWaySetting.hallWayScene
-	hallWay.findPath(a,b)
+	hallWay.findPath(a,b,hallWaySetting)
 
 func refreshTiles():
 	loadNewTiles()
 	generateTiles()
-	connectDoors()
+#	print("connect hallways")
+#	connectDoors()
+#	print("done connecting")
 
 func loadNewTiles():
 	var coordsInRange = getCoordsWithinRange(CREATE_DISTANCE)
@@ -84,7 +86,7 @@ func loadNewTiles():
 	
 #	Delete old tiles
 	for coord in oldCoords:
-		loadedTiles[coord].queue_free()
+		loadedTiles[coord].call_deferred("queue_free")
 		loadedTiles.erase(coord)
 	
 #	Create new tiles
@@ -104,14 +106,15 @@ func getCoordsWithinRange(loadRange):
 	return coords
 
 func canOverwriteWall(translation,priority):
+	translation = translation.round()
 	if !wallList.has(translation):
 		return true
 	
-	if wallList[translation].priority < priority:
+	if wallList[translation].priority <= priority:
 		if wallList[translation].get_parent() != null:
-			wallList[translation].get_parent().remove_child(wallList[translation])
+			wallList[translation].get_parent().call_deferred("remove_child",wallList[translation])
 		else:
-			wallList.call_deferred("queue_free")
+			wallList[translation].needsDeletion = true
 		return true
 	else:
 		return false

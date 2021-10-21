@@ -7,6 +7,7 @@ var currentRange = 0.0
 var targetRange = 0.0
 
 var speed = 1.0
+export var rangeTarget = 14
 
 func _process(delta):
 	if currentLocation.distance_to(targetLocation) < 0.05:
@@ -17,7 +18,7 @@ func _process(delta):
 	$Light.translation = currentLocation
 	
 	if Vector2(currentRange,0).distance_to(Vector2(targetRange,0)) < 0.05:
-		targetRange = rand_range(13.5,14.5)
+		targetRange = rand_range(rangeTarget-0.5,rangeTarget+0.5)
 	
 	currentRange = lerp(currentRange,targetRange,delta*10)
 	$Light/OmniLight.omni_range = currentRange

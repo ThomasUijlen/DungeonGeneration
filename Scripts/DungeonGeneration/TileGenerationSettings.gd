@@ -62,8 +62,11 @@ func createWall(side,wallType):
 		side.call_deferred("add_child",wall)
 
 func chooseWall(neighbouringTile,side):
+	if neighbouringTile.currentOccupation != null and (tile.currentOccupation.get_parent().type == "hallway" and neighbouringTile.currentOccupation.get_parent().type == "hallway"):
+		return null
 	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.get_parent() == tile.currentOccupation.get_parent():
 		return null
+	
 	
 	if doorTypes.size() > 0:
 		if get_parent().settings.getRandomNumber(side.global_transform.origin,0,100) < doorSpawnChance:

@@ -46,8 +46,6 @@ func threadFunction(data):
 		call_deferred("checkForThreadRerun")
 
 func checkForThreadRerun():
-	print(TileHandler.roomsWaitingForPlacement)
-	print(TileHandler.wallsWaitingForPlacement)
 	if TileHandler.roomsWaitingForPlacement > 0 or TileHandler.wallsWaitingForPlacement > 0:
 		print("thread rerun")
 		semaphore.post()
