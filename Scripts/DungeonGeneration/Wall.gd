@@ -16,8 +16,7 @@ func registerPlacedWall():
 	TileHandler.wallsWaitingForPlacement -= 1
 
 func checkPlacement(translation):
-	if TileHandler.canOverwriteWall(translation,priority):
-		TileHandler.wallList[translation] = self
+	if TileHandler.canOverwriteWall(translation,priority,self):
 		return true
 	return false
 

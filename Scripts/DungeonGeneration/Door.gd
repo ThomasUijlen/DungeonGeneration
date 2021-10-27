@@ -18,7 +18,10 @@ func hasFreeSpace():
 	neighbouringTile = TileHandler.getTile(neighbourPositionHelper.global_transform.origin)
 	neighbourPositionHelper.call_deferred("queue_free")
 	
-	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.accessible:
+	if neighbouringTile != null and !is_instance_valid(neighbouringTile):
+		return false
+	
+	if neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation != null and neighbouringTile.currentOccupation.accessible:
 		connectDoor()
 	
 	return neighbouringTile.currentOccupation == null or !neighbouringTile.currentOccupation.accessible

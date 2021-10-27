@@ -58,15 +58,14 @@ func connectWithHallway(a,b):
 			hallWaySetting = hallWaySettings
 	
 	var hallWay = GlobalPackedScenes.hallWayScene.instance()
-	GenerationHandler.currentScene.call_deferred("add_child",hallWay)
 	hallWay.hallWayScene = hallWaySetting.hallWayScene
-	hallWay.findPath(a,b,hallWaySetting)
+	hallWay.call_deferred("findPath",a,b,hallWaySetting)
 
 func refreshTiles():
 	loadNewTiles()
 	generateTiles()
 #	print("connect hallways")
-#	connectDoors()
+	connectDoors()
 #	print("done connecting")
 
 func loadNewTiles():
@@ -105,9 +104,12 @@ func getCoordsWithinRange(loadRange):
 	
 	return coords
 
-func canOverwriteWall(translation,priority):
+func canOverwriteWall(translation,priority,wall):
 	translation = translation.round()
+	translation = refineCoord(translation)
+	
 	if !wallList.has(translation):
+		TileHandler.wallList[translation] = wall
 		return true
 	
 	if wallList[translation].priority <= priority:
@@ -115,6 +117,22 @@ func canOverwriteWall(translation,priority):
 			wallList[translation].get_parent().call_deferred("remove_child",wallList[translation])
 		else:
 			wallList[translation].needsDeletion = true
+		
+		TileHandler.wallList[translation] = wall
 		return true
 	else:
 		return false
+
+#This function might look weird, but I ran into a very odd issue and this is the easiest way to solve it.
+#When rounding Vector (-0.001,1,1) it will return (-0,1,1)
+#When rounding Vector (0.001,1,1) it will return (0,1,1)
+#Those two coordinates are EXACTLY the same, but because one 0 is seen as a negative number comparing them will return false
+#This breaks wall placement so this function fixes those issues, couldnt think of a better solution even though this one is quite sloppy :(
+func refineCoord(coord):
+	if coord.x == -0:
+		coord.x = 0
+	if coord.y == -0:
+		coord.y = 0
+	if coord.z == -0:
+		coord.z = 0
+	return coord

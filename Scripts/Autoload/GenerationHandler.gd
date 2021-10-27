@@ -41,14 +41,18 @@ func activateThread():
 func threadFunction(data):
 	while threadActive:
 		semaphore.wait()
-		print("thead run")
+#		print("thead run")
 		TileHandler.refreshTiles()
+#		print("call rerun")
 		call_deferred("checkForThreadRerun")
+#		print("called rerun")
 
 func checkForThreadRerun():
+#	print("check for rerun")
 	if TileHandler.roomsWaitingForPlacement > 0 or TileHandler.wallsWaitingForPlacement > 0:
-		print("thread rerun")
+#		print("thread rerun")
 		semaphore.post()
+#	print("rerun check done")
 
 #Wait for thread to finish when exiting the application to properly dispose of it
 func _notification(what):

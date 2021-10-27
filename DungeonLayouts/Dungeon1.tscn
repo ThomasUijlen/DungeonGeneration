@@ -18,13 +18,13 @@ script = ExtResource( 2 )
 
 [node name="BasicRoom" type="Node" parent="Castle/Rooms"]
 script = ExtResource( 3 )
-noiseThreshold = 0.6
+noiseThreshold = 0.65
 roomScene = ExtResource( 4 )
 
 [node name="StorageRoom" type="Node" parent="Castle/Rooms"]
 script = ExtResource( 3 )
 roomSeed = 1000
-noiseThreshold = 0.6
+noiseThreshold = 0.65
 roomScene = ExtResource( 5 )
 
 [node name="Hallways" type="Node" parent="Castle"]

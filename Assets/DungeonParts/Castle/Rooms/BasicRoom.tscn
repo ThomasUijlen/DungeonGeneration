@@ -38,7 +38,6 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
 wallTypes = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ) ]
 doorTypes = [ ExtResource( 5 ) ]
-doorSpawnChance = 50
 
 [node name="Brick2" type="MeshInstance" parent="RegularTile2"]
 transform = Transform( 0.634731, 0, -0.772734, 0, 1, 0, 0.772734, 0, 0.634731, -0.966715, 0.117983, -1.1673 )
@@ -126,11 +125,6 @@ material/0 = null
 [node name="Torch" parent="RegularTile3" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32067, 0.908035, 0.705172 )
 
-[node name="RegularTile4" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
-wallTypes = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ) ]
-doorTypes = [ ExtResource( 5 ) ]
-
 [node name="RegularTile5" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4 )
 spawnChance = 50
@@ -168,7 +162,6 @@ shape = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
 wallTypes = [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 3 ) ]
 doorTypes = [ ExtResource( 5 ) ]
-doorSpawnChance = 50
 
 [node name="RegularTile7" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4 )
@@ -194,7 +187,7 @@ mesh = ExtResource( 12 )
 material/0 = null
 
 [node name="Statue_Horse2" type="MeshInstance" parent="RegularTile7"]
-transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -0.0308847, 0.0904045, 3.57329 )
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -0.0308847, 0.0904045, 2.77639 )
 mesh = ExtResource( 15 )
 material/0 = null
 material/1 = null
@@ -210,7 +203,7 @@ mesh = ExtResource( 16 )
 material/0 = null
 
 [node name="Torch2" parent="RegularTile7" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0110359, 0.176381, 0.146812 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0110359, 0.176381, -0.650091 )
 
 [node name="RegularTile8" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
@@ -241,7 +234,7 @@ mesh = ExtResource( 13 )
 material/0 = null
 
 [node name="Statue_Horse" type="MeshInstance" parent="RegularTile9"]
-transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -0.0308847, 0.0904045, 3.57329 )
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -0.0308847, 0.0904045, 2.77639 )
 mesh = ExtResource( 15 )
 material/0 = null
 material/1 = null
@@ -252,4 +245,4 @@ material/1 = null
 shape = SubResource( 4 )
 
 [node name="Torch" parent="RegularTile9" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0110354, 0.176381, 0.146812 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0110354, 0.176381, -0.650091 )
