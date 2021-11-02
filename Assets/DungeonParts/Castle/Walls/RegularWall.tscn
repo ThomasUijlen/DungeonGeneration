@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Wall_Modular.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/DungeonParts/Castle/Materials/WallDark.tres" type="Material" id=3]
-[ext_resource path="res://Scripts/DungeonGeneration/Wall.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/DungeonGeneration/Wall.cs" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2, 0.248572 )
@@ -15,7 +15,7 @@ extents = Vector3( 0.55, 2, 0.55 )
 size = Vector2( 4, 4 )
 
 [node name="RegularWall" type="Spatial"]
-script = ExtResource( 6 )
+script = ExtResource( 4 )
 
 [node name="Column" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )

@@ -16,9 +16,9 @@ config/icon="res://icon.png"
 
 [autoload]
 
-TileHandler="*res://Scripts/Autoload/TileHandler.gd"
-GenerationHandler="*res://Scripts/Autoload/GenerationHandler.gd"
-GlobalEnums="*res://Scripts/Autoload/GlobalEnums.gd"
+TileHandler="*res://Scripts/Autoload/TileHandler.cs"
+GenerationHandler="*res://Scripts/Autoload/GenerationHandler.cs"
+GlobalEnums="*res://Scripts/Autoload/GlobalEnums.cs"
 GlobalPackedScenes="*res://Scripts/Autoload/GlobalPackedScenes.gd"
 GlobalVariables="*res://Scripts/Autoload/GlobalVariables.gd"
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/DungeonGeneration/HallWay.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/DungeonGeneration/HallWay.cs" type="Script" id=1]
 
 [node name="HallWay" type="Spatial"]
 script = ExtResource( 1 )

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Arch_Door.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Arch.tres" type="ArrayMesh" id=2]
-[ext_resource path="res://Scripts/DungeonGeneration/Door.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/DungeonGeneration/Door.cs" type="Script" id=3]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=5]
 
 [sub_resource type="BoxShape" id=1]

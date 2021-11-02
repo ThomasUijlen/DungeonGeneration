@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Wall_Modular.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/DungeonGeneration/Wall.cs" type="Script" id=2]
 [ext_resource path="res://Assets/DungeonParts/Castle/Objects/Torch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=4]
 [ext_resource path="res://Assets/DungeonParts/Castle/Materials/WallDark.tres" type="Material" id=5]
-[ext_resource path="res://Scripts/DungeonGeneration/Wall.gd" type="Script" id=7]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2, 0.248572 )
@@ -16,7 +16,7 @@ extents = Vector3( 0.55, 2, 0.55 )
 size = Vector2( 4, 4 )
 
 [node name="RegularWall" type="Spatial"]
-script = ExtResource( 7 )
+script = ExtResource( 2 )
 priority = 1
 
 [node name="Torch" parent="." instance=ExtResource( 3 )]

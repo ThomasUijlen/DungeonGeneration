@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/DungeonParts/Castle/Walls/RegularWall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/DungeonParts/Castle/Tiles/RegularTile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/DungeonParts/Castle/Walls/RegularDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scripts/DungeonGeneration/HallWayContainer.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/DungeonGeneration/HallWayContainer.cs" type="Script" id=5]
 
 [node name="RegularHallway" type="Spatial"]
 script = ExtResource( 5 )
