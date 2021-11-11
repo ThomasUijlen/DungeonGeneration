@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Wall_Modular.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/DungeonParts/Castle/Materials/WallDark.tres" type="Material" id=3]
 [ext_resource path="res://Scripts/DungeonGeneration/Wall.cs" type="Script" id=4]
+[ext_resource path="res://Optimization/LODMesh.cs" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 2, 2, 0.248572 )
@@ -22,12 +23,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
+script = ExtResource( 5 )
+meshName = "CastleColumn"
+LODMeshes = [ ExtResource( 2 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Column2" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
+script = ExtResource( 5 )
+meshName = "CastleColumn"
+LODMeshes = [ ExtResource( 2 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Wall_Modular" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
@@ -35,6 +44,10 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
+script = ExtResource( 5 )
+meshName = "CastleWall"
+LODMeshes = [ ExtResource( 1 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Wall_Modular2" type="MeshInstance" parent="."]
 transform = Transform( 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -1, 1, 0 )
@@ -42,6 +55,10 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
+script = ExtResource( 5 )
+meshName = "CastleWall"
+LODMeshes = [ ExtResource( 1 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Wall_Modular3" type="MeshInstance" parent="."]
 transform = Transform( -1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, -1, 3, 3.04647e-09 )
@@ -49,6 +66,10 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
+script = ExtResource( 5 )
+meshName = "CastleWall"
+LODMeshes = [ ExtResource( 1 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Wall_Modular4" type="MeshInstance" parent="."]
 transform = Transform( -4.37114e-08, 1, 1.19209e-07, -1, -4.37114e-08, 0, 4.44089e-15, -1.19209e-07, 1, 1, 3, -5.65582e-08 )
@@ -56,6 +77,10 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
+script = ExtResource( 5 )
+meshName = "CastleWall"
+LODMeshes = [ ExtResource( 1 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
@@ -76,3 +101,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = ExtResource( 3 )
+script = ExtResource( 5 )
+meshName = "WallBack"
+LODMeshes = [ SubResource( 3 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )

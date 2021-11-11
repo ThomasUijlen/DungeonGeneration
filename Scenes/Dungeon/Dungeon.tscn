@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Dungeon/Dungeon.gd" type="Script" id=1]
+[ext_resource path="res://Optimization/FpsMonitor.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Characters/Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ProceduralSky" id=1]
@@ -34,3 +35,13 @@ directional_shadow_max_distance = 200.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.485, 0 )
+
+[node name="FPS" type="Label" parent="."]
+margin_left = 949.0
+margin_top = 10.0
+margin_right = 989.0
+margin_bottom = 24.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

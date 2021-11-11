@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Barrel.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://Optimization/LODMesh.cs" type="Script" id=2]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.518656
@@ -18,3 +19,8 @@ mesh = ExtResource( 1 )
 material/0 = null
 material/1 = null
 material/2 = null
+script = ExtResource( 2 )
+meshName = "Barrel"
+dynamic = true
+LODMeshes = [ ExtResource( 1 ), null ]
+triggerDistances = PoolRealArray( 0, 20 )

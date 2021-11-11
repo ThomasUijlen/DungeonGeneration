@@ -73,7 +73,7 @@ public class Tile : Spatial
         room.setSettings(roomSettings);
         room.Translation = Translation;
         room.RotationDegrees = new Vector3(0,90*roomSettings.getRandomNumber(Translation,0,4),0);
-        GenerationHandler.currentScene.CallDeferred("add_child",room);
+        GenerationHandler.currentScene.AddChild(room);
     }
 
     public bool overwriteOccupation(TileGenerationSettings occupation) {

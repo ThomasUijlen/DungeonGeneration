@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Arch_Door.tres" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Arch.tres" type="ArrayMesh" id=2]
 [ext_resource path="res://Scripts/DungeonGeneration/Door.cs" type="Script" id=3]
+[ext_resource path="res://Optimization/LODMesh.cs" type="Script" id=4]
 [ext_resource path="res://Assets/DungeonParts/Castle/Models/Column.tres" type="ArrayMesh" id=5]
 
 [sub_resource type="BoxShape" id=1]
@@ -25,18 +26,30 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 mesh = ExtResource( 5 )
 material/0 = null
 material/1 = null
+script = ExtResource( 4 )
+meshName = "CastleColumn"
+LODMeshes = [ ExtResource( 5 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Column2" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 mesh = ExtResource( 5 )
 material/0 = null
 material/1 = null
+script = ExtResource( 4 )
+meshName = "CastleColumn"
+LODMeshes = [ ExtResource( 5 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="Wall_Modular" type="MeshInstance" parent="."]
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
 material/2 = null
+script = ExtResource( 4 )
+meshName = "CasttleArch"
+LODMeshes = [ ExtResource( 2 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
@@ -72,6 +85,10 @@ material/0 = null
 material/1 = null
 material/2 = null
 material/3 = null
+script = ExtResource( 4 )
+meshName = "CastleDoor"
+LODMeshes = [ ExtResource( 1 ), null ]
+triggerDistances = PoolRealArray( 0, 50 )
 
 [node name="StaticBody2" type="StaticBody" parent="Arch_Door"]
 
